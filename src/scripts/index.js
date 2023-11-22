@@ -8,6 +8,7 @@ app.init = () => {
     // om vi skal reagere på en form eller liste.
     users.create();
     users.list();
+    users.update();
 
 };
 
