@@ -43,4 +43,14 @@ userservice.updateUser = async (user) => {
 }
 
 
+userservice.updateUserProfile = async (formData) => {
+
+    return fetch('http://localhost:3000/user/profile', {
+        method: 'POST', 
+        body: formData
+    }).then((response) => response.json()); 
+
+
+}
+
 export default userservice;

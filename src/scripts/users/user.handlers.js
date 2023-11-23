@@ -64,15 +64,11 @@ export const userUpdateProfile = async (e) => {
 
     let formData = new FormData();
     formData.append('id', id.value);
-    formData.append('profile',  profile.file[0])
+    formData.append('profile', profile.files[0])
 
-    fetch('http://localhost:3000/user/profile', {
+    const result = await userservice.updateUserProfile(formData);
 
-            method: 'POST', 
-            body: formData
-
-    }).then((response) => response.json()).then((response) => console.log(response));  
-    console.log('FormData', formData);
+    console.log('FormData', result);
 
 
     return true;

@@ -197,3 +197,17 @@ button:hover {
       color-scheme: dark;
     }
 }
+
+.hidden {
+
+    visibility: hidden;
+    height: 0;
+
+}
+
+.fileupload {
+
+    position: relative;
+    left: -1000px
+
+}

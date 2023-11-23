@@ -125,7 +125,7 @@ users.update = async () => {
 
         profileImageElem.src = profileImage;
 
-        profileForm.addEventListener('submit', updateProfile)
+        profileForm.addEventListener('change', updateProfile)
 
     }
 
