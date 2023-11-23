@@ -60,8 +60,22 @@ export const userUpdateProfile = async (e) => {
 
     e.preventDefault();
 
-    let formData = new FormData()
+    const {id, profile} = e.currentTarget.elements;
 
+    let formData = new FormData();
+    formData.append('id', id.value);
+    formData.append('profile',  profile.file[0])
+
+    fetch('http://localhost:3000/user/profile', {
+
+            method: 'POST', 
+            body: formData
+
+    }).then((response) => response.json()).then((response) => console.log(response));  
+    console.log('FormData', formData);
+
+
+    return true;
 
 
 }

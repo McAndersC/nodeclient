@@ -1,4 +1,4 @@
-import { userCreateHandler, userUpdateHandler } from "./user.handlers.js";
+import { userCreateHandler, userUpdateHandler, userUpdateProfile } from "./user.handlers.js";
 import userservice from "./user.service.js";
 
 const users = {};
@@ -87,7 +87,11 @@ users.update = async () => {
 
     const updateProfile = (e) => {
 
-        
+        userUpdateProfile(e).then( (res) => {
+    
+            console.log('Server resultat', res)
+    
+        }) 
 
     }
 
