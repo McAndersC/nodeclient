@@ -55,3 +55,13 @@ export const userUpdateHandler = async (e) => {
 
 
 }
+
+export const userUpdateProfile = async (e) => {
+
+    e.preventDefault();
+
+    let formData = new FormData()
+
+
+
+}

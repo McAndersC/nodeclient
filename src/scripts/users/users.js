@@ -6,33 +6,23 @@ const users = {};
 // Undersøger om en "Create" <form> er tilstede.
 
 // Funktion til at oprette vores bruger.
-const createUser = (e) => {
-
-    userCreateHandler(e).then( (res) => {
-
-        console.log('Server resultat', res)
-
-    })
-
-}
-
-const updateUser = (e) => {
 
 
-    userUpdateHandler(e).then( (res) => {
-
-
-        console.log('Server resultat', res)
-
-    } ) 
-
-
-} 
 
 users.create = () => {
 
     const form = document.querySelector('#createForm');
+
+    const createUser = (e) => {
+
+        userCreateHandler(e).then( (res) => {
     
+            console.log('Server resultat', res)
+    
+        })
+    
+    }
+
     if(form)
     {
         form.addEventListener('submit', createUser);
@@ -48,7 +38,11 @@ users.list = async () => {
  
      // Template for en user række <tr></tr> i vores <table>
     const listTmpl = (user) => {
+
+        const profileImage = user.profile === "" ? '/mcdm.ico' : `http://localhost:3000/profiles/${user.profile}` 
+
         return `<tr>
+            <td><img src="${profileImage}" width="100" /> </td>
             <td>${user.name} </td>
             <td>${user.email}</td>
             <td>
@@ -79,15 +73,32 @@ users.list = async () => {
 users.update = async () => {
 
     const form = document.querySelector('#updateForm');
+    const profileForm = document.querySelector('#profileForm');
+
+    const updateUser = (e) => {
+
+        userUpdateHandler(e).then( (res) => {
+    
+            console.log('Server resultat', res)
+    
+        }) 
+    
+    } 
+
+    const updateProfile = (e) => {
+
+        
+
+    }
+
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = urlParams.get('id');
+
+    let result = await userservice.getUserById(id);
+    let user = result.data;
 
     if(form) {
 
-        const urlParams = new URLSearchParams(window.location.search)
-        const id = urlParams.get('id');
-
-        let result = await userservice.getUserById(id);
-        let user = result.data;
-  
         if(user) {
 
             form.elements['email'].value = user.email;
@@ -96,9 +107,21 @@ users.update = async () => {
 
             form.addEventListener('submit', updateUser)
 
-            
         }
 
+    }
+
+    if(profileForm) {
+
+        let profileImageElem = document.querySelector('#profileImage');
+        const profileImage = user.profile === "" ? '/mcdm.ico' : `http://localhost:3000/profiles/${user.profile}` 
+
+        // Udfyldet Form og Billede
+        profileForm.elements['id'].value = user.id;
+
+        profileImageElem.src = profileImage;
+
+        profileForm.addEventListener('submit', updateProfile)
 
     }
 
