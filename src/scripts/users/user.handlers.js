@@ -7,13 +7,14 @@ export const userCreateHandler = async (e) => {
 
     // Vi "Dekonstruere" et object og tager de felter vi benytter.
     // I dette tilfælde tager vi vores input felter via deres "name" value.
-    const { firstname, email } = e.currentTarget.elements;
+    const { firstname, email, age } = e.currentTarget.elements;
 
     // Nu opretter vi det object vi vil sende til serveren.
     // Et objekt der har de værdier som vores server Model/Scheme som minimum skal have
     let user = {
         name: firstname.value,
-        email: email.value
+        email: email.value,
+        age: age.value/*  */
     }
 
     // Vi sender objektet til vores produkt service som sørger for kontakten til serveren.
@@ -74,4 +75,15 @@ export const userUpdateProfile = async (e) => {
     return true;
 
 
+}
+
+export const userDeleteHandler = async (e) => {
+
+    e.preventDefault()
+
+    const {id} = e.currentTarget.elements;
+
+    const result = await userservice.deleteUser(id.value);
+
+    return result;
 }

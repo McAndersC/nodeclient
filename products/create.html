@@ -17,21 +17,37 @@
     <h1><a href="/">C.R.U.D</a></h1>
 
     <nav class="navigation">
-        <span>USERS</span>
-        <a href="/users/create.html">CREATE</a>
-        <a href="/users/read.html">READ</a>
+        <span>PRODUCTS</span>
+        <a href="/products/create.html">CREATE</a>
+        <a href="/products/read.html">READ</a>
     </nav>
-    <h1>Delete</h1>
 
-    <form id="deleteForm">
+    <h1>Create</h1>
+
+    <form id="productCreateForm">
 
         <label>
-            ID:
-            <input type="text" name="id" disabled/>
+            Title:
+            <input type="text" name="title" required/>
+        </label>
+
+        <label>
+            Price:
+            <input type="number" name="price" required />
+        </label>
+
+        <label>
+            Recommended:
+            <input type="checkbox" name="recommended" required />
+        </label>
+
+        <label>
+            Discount in percent (%):
+            <input type="number" name="discountInPercent" value="0" required />
         </label>
 
         <button>SEND</button>
-        
+
     </form>
 
 

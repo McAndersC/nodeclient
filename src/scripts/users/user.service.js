@@ -23,8 +23,6 @@ userservice.getUsers = async () => {
 
 userservice.getUserById = async (id) => {
 
-    console.log('getUserByID', id);
-
     return fetch('http://localhost:3000/user?id=' + id).then(res => res.json())
 
 
@@ -42,6 +40,16 @@ userservice.updateUser = async (user) => {
 
 }
 
+userservice.deleteUser = async (id) => {
+
+
+    // Send the user object to the server.
+    return fetch('http://localhost:3000/user?id='+id, { 
+        method: 'DELETE', 
+        headers: { 'Content-Type': 'application/json' } 
+    }).then((response) => response.json()); 
+
+}
 
 userservice.updateUserProfile = async (formData) => {
 

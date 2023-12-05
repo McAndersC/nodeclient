@@ -17,22 +17,24 @@
     <h1><a href="/">C.R.U.D</a></h1>
 
     <nav class="navigation">
-        <span>USERS</span>
-        <a href="/users/create.html">CREATE</a>
-        <a href="/users/read.html">READ</a>
+        <span>Products</span>
+        <a href="/products/create.html">CREATE</a>
+        <a href="/products/read.html">READ</a>
     </nav>
-    <h1>Delete</h1>
 
-    <form id="deleteForm">
+    <h1>Read</h1>
 
-        <label>
-            ID:
-            <input type="text" name="id" disabled/>
-        </label>
-
-        <button>SEND</button>
-        
-    </form>
+    <table class="products-list">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Recommended</th>
+            <th>Dsicount In Percent (&)</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Vi indsætter dynamisk vores brugere her -->
+    </table>
 
 
 </body>
