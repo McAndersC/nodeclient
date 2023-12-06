@@ -111,20 +111,21 @@ products.update = async () => {
             form.addEventListener('submit', updateProduct)
 
         }
+        
+        if(productsForm) {
 
+            let imageElem = document.querySelector('#productImage');
+    
+            // Udfyldet Form og Billede
+            productsForm.elements['id'].value = product._id;
+            imageElem.src = 'http://localhost:3000/products/' + product.image;
+    
+            productsForm.addEventListener('change', updateImage)
+    
+        }
     }
 
-    if(productsForm) {
 
-        let imageElem = document.querySelector('#productImage');
-
-        // Udfyldet Form og Billede
-        productsForm.elements['id'].value = product._id;
-        imageElem.src = 'http://localhost:3000/products/' + product.image;
-
-        productsForm.addEventListener('change', updateImage)
-
-    }
 
 };
 

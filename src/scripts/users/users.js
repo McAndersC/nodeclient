@@ -111,21 +111,23 @@ users.update = async () => {
 
         }
 
+        if(profileForm) {
+
+            let profileImageElem = document.querySelector('#profileImage');
+    
+            // Udfyldet Form og Billede
+            profileForm.elements['id'].value = user._id;
+    
+            console.log(profileImageElem)
+            profileImageElem.src = 'http://localhost:3000/profiles/' + user.profile; //http://localhost:3000/profiles/fallback_profile.jpg
+    
+            profileForm.addEventListener('change', updateProfile)
+    
+        }
+        
     }
 
-    if(profileForm) {
 
-        let profileImageElem = document.querySelector('#profileImage');
-
-        // Udfyldet Form og Billede
-        profileForm.elements['id'].value = user._id;
-
-        console.log(profileImageElem)
-        profileImageElem.src = 'http://localhost:3000/profiles/' + user.profile; //http://localhost:3000/profiles/fallback_profile.jpg
-
-        profileForm.addEventListener('change', updateProfile)
-
-    }
 
 
 
